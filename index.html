@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>D Brother's Gym | Fitness & Health Club</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080808;
+    color:white;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,.85);
+    backdrop-filter:blur(12px);
+    z-index:1000;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+}
+
+.logo b{
+    color:#ff2020;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#ff2020;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:120px 7% 70px;
+
+    background:
+    linear-gradient(90deg,
+    rgba(0,0,0,.92),
+    rgba(0,0,0,.45)),
+    
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:700px;
+    animation:heroIn 1.2s ease;
+}
+
+.tag{
+    color:#ff2020;
+    letter-spacing:4px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(48px,9vw,90px);
+    line-height:.9;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#ff2020;
+}
+
+.hero p{
+    color:#ddd;
+    font-size:18px;
+    line-height:1.7;
+    max-width:600px;
+    margin-bottom:32px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 28px;
+    background:#ff2020;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+    font-weight:bold;
+    margin-right:10px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:white;
+    color:#111;
+    transform:translateY(-4px);
+}
+
+.btn-outline{
+    background:transparent;
+    border:1px solid white;
+}
+
+/* SECTION */
+section{
+    padding:90px 7%;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.heading small{
+    color:#ff2020;
+    letter-spacing:3px;
+    font-weight:bold;
+}
+
+.heading h2{
+    font-size:44px;
+    margin-top:10px;
+}
+
+/* ABOUT */
+.about{
+    background:#111;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:45px;
+    align-items:center;
+}
+
+.about-img{
+    width:100%;
+    height:450px;
+    object-fit:cover;
+    border-radius:14px;
+}
+
+.about-text h3{
+    font-size:34px;
+    margin-bottom:20px;
+}
+
+.about-text p{
+    color:#aaa;
+    line-height:1.8;
+    margin-bottom:18px;
+}
+
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.card{
+    padding:35px 25px;
+    background:#151515;
+    border:1px solid #292929;
+    border-radius:12px;
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#ff2020;
+}
+
+.card .icon{
+    font-size:42px;
+    margin-bottom:18px;
+}
+
+.card h3{
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#999;
+    line-height:1.6;
+}
+
+/* PLANS */
+.plans{
+    background:#111;
+}
+
+.plan-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.plan{
+    background:#181818;
+    border:1px solid #292929;
+    padding:35px 25px;
+    text-align:center;
+    border-radius:12px;
+}
+
+.plan.popular{
+    border:2px solid #ff2020;
+    transform:scale(1.04);
+}
+
+.plan h3{
+    font-size:22px;
+}
+
+.price{
+    color:#ff2020;
+    font-size:44px;
+    font-weight:900;
+    margin:20px 0;
+}
+
+.plan p{
+    color:#aaa;
+    margin:12px;
+}
+
+/* GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:330px;
+    object-fit:cover;
+    border-radius:12px;
+    transition:.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+/* CTA */
+.cta{
+    text-align:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.82)),
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.cta h2{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.cta p{
+    color:#ccc;
+    margin-bottom:30px;
+}
+
+/* CONTACT */
+.contact{
+    background:#111;
+}
+
+.contact-box{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+}
+
+.contact-item{
+    background:#181818;
+    padding:22px;
+    margin:12px 0;
+    border-radius:8px;
+}
+
+.contact-item b{
+    color:#ff2020;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    background:#050505;
+    color:#777;
+}
+
+footer strong{
+    color:#ff2020;
+}
+
+/* ANIMATION */
+@keyframes heroIn{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+    nav{
+        padding:16px 5%;
+    }
+
+    nav div:last-child{
+        display:none;
+    }
+
+    .hero{
+        min-height:100vh;
+        padding:110px 6% 60px;
+    }
+
+    .hero h1{
+        font-size:55px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    section{
+        padding:65px 6%;
+    }
+
+    .about-grid,
+    .services,
+    .plan-grid{
+        grid-template-columns:1fr;
+    }
+
+    .plan.popular{
+        transform:none;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .gallery img{
+        height:260px;
+    }
+
+    .heading h2{
+        font-size:34px;
+    }
+
+    .cta h2{
+        font-size:35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+    <div class="logo">
+        D BROTHER'S <b>GYM</b>
+    </div>
+
+    <div>
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#services">SERVICES</a>
+        <a href="#plans">PLANS</a>
+        <a href="#contact">CONTACT</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="tag">
+            FITNESS • STRENGTH • HEALTH
+        </div>
+
+        <h1>
+            D BROTHER'S<br>
+            <span>GYM</span>
+        </h1>
+
+        <p>
+            Build your strength. Transform your body.
+            Become the strongest version of yourself
+            at D Brother's Gym Fitness & Health Club.
+        </p>
+
+        <a href="#plans" class="btn">
+            VIEW MEMBERSHIP
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+            CONTACT US
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <div class="heading">
+
+        <small>ABOUT US</small>
+
+        <h2>
+            TRAIN HARD. STAY STRONG.
+        </h2>
+
+    </div>
+
+
+    <div class="about-grid">
+
+        <img
+        class="about-img"
+        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=90"
+        alt="Gym">
+
+        <div class="about-text">
+
+            <h3>
+                Welcome to D Brother's Gym
+            </h3>
+
+            <p>
+                D Brother's Gym Fitness & Health Club
+                is a motivating place for people who
+                want to improve their strength, fitness
+                and lifestyle.
+            </p>
+
+            <p>
+                Train consistently, stay focused and
+                work towards becoming a stronger
+                version of yourself.
+            </p>
+
+            <a href="#contact" class="btn">
+                JOIN NOW
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+<section id="services">
+
+    <div class="heading">
+
+        <small>WHAT WE OFFER</small>
+
+        <h2>
+            OUR SERVICES
+        </h2>
+
+    </div>
+
+
+    <div class="services">
+
+        <div class="card">
+            <div class="icon">🏋️</div>
+            <h3>Strength Training</h3>
+            <p>
+                Build strength and muscle with
+                quality gym equipment.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <div class="icon">🔥</div>
+            <h3>Fat Loss</h3>
+            <p>
+                Improve fitness and burn calories
+                with effective workouts.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <div class="icon">💪</div>
+            <h3>Muscle Building</h3>
+            <p>
+                Train consistently and work towards
+                your muscle-building goals.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <div class="icon">🏃</div>
+            <h3>Cardio Training</h3>
+            <p>
+                Improve stamina and cardiovascular
+                fitness.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <div class="icon">🥗</div>
+            <h3>Fitness Guidance</h3>
+            <p>
+                Get guidance to maintain a healthy
+                and active lifestyle.
+            </p>
+        </div>
+
+
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Personal Training</h3>
+            <p>
+                Focused workouts designed around
+                your fitness goals.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PLANS -->
+<section class="plans" id="plans">
+
+    <div class="heading">
+
+        <small>MEMBERSHIP</small>
+
+        <h2>
+            MEMBERSHIP PLANS
+        </h2>
+
+    </div>
+
+
+    <div class="plan-grid">
+
+        <div class="plan">
+
+            <h3>1 MONTH</h3>
+
+            <div class="price">
+                ₹999
+            </div>
+
+            <p>Gym Access</p>
+            <p>Cardio Area</p>
+            <p>Strength Training</p>
+
+            <a href="#contact" class="btn">
+                JOIN NOW
+            </a>
+
+        </div>
+
+
+        <div class="plan popular">
+
+            <h3>3 MONTHS</h3>
+
+            <div class="price">
+                ₹2499
+            </div>
+
+            <p>Full Gym Access</p>
+            <p>Cardio + Strength</p>
+            <p>Fitness Guidance</p>
+
+            <a href="#contact" class="btn">
+                JOIN NOW
+            </a>
+
+        </div>
+
+
+        <div class="plan">
+
+            <h3>6 MONTHS</h3>
+
+            <div class="price">
+                ₹3999
+            </div>
+
+            <p>Full Gym Access</p>
+            <p>All Equipment</p>
+            <p>Training Support</p>
+
+            <a href="#contact" class="btn">
+                JOIN NOW
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+<section>
+
+    <div class="heading">
+
+        <small>OUR GYM</small>
+
+        <h2>
+            GYM GALLERY
+        </h2>
+
+    </div>
+
+
+    <div class="gallery">
+
+        <img
+        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=90"
+        alt="Gym">
+
+        <img
+        src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=90"
+        alt="Gym">
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+
+    <h2>
+        READY TO GET STRONGER?
+    </h2>
+
+    <p>
+        Your transformation starts with one decision.
+    </p>
+
+    <a href="#contact" class="btn">
+        START YOUR JOURNEY
+    </a>
+
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <div class="heading">
+
+        <small>GET IN TOUCH</small>
+
+        <h2>
+            CONTACT US
+        </h2>
+
+    </div>
+
+
+    <div class="contact-box">
+
+        <div class="contact-item">
+            📍 <b>Location</b><br>
+            D Brother's Gym Fitness & Health Club
+        </div>
+
+        <div class="contact-item">
+            📞 <b>Phone</b><br>
+            +91 XXXXX XXXXX
+        </div>
+
+        <div class="contact-item">
+            🕐 <b>Opening Hours</b><br>
+            6:00 AM – 10:00 PM
+        </div>
+
+        <br>
+
+        <a href="tel:+91XXXXXXXXXX" class="btn">
+            CALL NOW
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    © 2026
+    <strong>D Brother's Gym</strong>
+    — Fitness & Health Club
+
+    <br><br>
+
+    Train Hard • Stay Strong • Never Quit
+
+</footer>
+
+</body>
+</html>
